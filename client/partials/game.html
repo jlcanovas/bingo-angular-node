@@ -1,0 +1,50 @@
+
+<div class="bingoTable">
+    <div class="row">
+    <div ng-repeat="index in [0, 1, 2, 3, 4, 5]">
+        <div class="col-md-2">
+        <div class="panel panel-primary" ng-click="vote(index)">
+            <h1 ng-if="isOwner()">
+                 {{game.votes[index]}}
+            </h1>
+            <p class="text-center">
+                <img src="img/{{bingoTable.cells[index].filename}}">
+            </p>
+            <p class="text-center">{{bingoTable.cells[index].description}}</p>
+	    </div>
+	    </div> 
+    </div>
+    </div>
+
+   <div class="row">
+    <div ng-repeat="index in [6, 7, 8, 9, 10, 11]">
+        <div class="col-md-2">
+        <div class="panel panel-primary" ng-click="vote(index)">
+            <h1 ng-if="isOwner()">
+                 {{game.votes[index]}}
+            </h1>
+            <p class="text-center">
+                <img src="img/{{bingoTable.cells[index].filename}}">
+            </p>
+            <p class="text-center">{{bingoTable.cells[index].description}}</p>
+        </div>
+        </div> 
+    </div>
+    </div>
+
+	<div class="row">
+    <div ng-repeat="index in [12, 13, 14, 15, 16, 17]">
+        <div class="col-md-2">
+        <div class="panel panel-primary" ng-click="vote(index)">
+            <h1 ng-if="isOwner()">
+                 {{game.votes[index]}}
+            </h1>
+            <p class="text-center">
+                <img src="img/{{bingoTable.cells[index].filename}}">
+            </p>
+            <p class="text-center">{{bingoTable.cells[index].description}}</p>
+        </div>
+        </div> 
+    </div>
+    </div>
+</div>
