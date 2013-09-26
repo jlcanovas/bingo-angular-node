@@ -1,0 +1,25 @@
+.bingoTable img {
+    min-width: 100px;
+	height: auto;
+}
+
+.bingoTable p {
+    font-size: small;
+    text-wrap: normal;
+}
+
+.bingoTable .panel {
+    width: 160px;
+	height: 160px;
+	padding: 15px 15px 15px 15px;
+}
+
+.bingoTable h1 {
+    position: absolute; 
+    top: 15px; 
+    left: 70px; 
+    width: 100%;
+    font-size : 80px;
+    font-weight: 900;
+    color : red;
+}

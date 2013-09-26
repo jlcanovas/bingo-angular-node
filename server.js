@@ -34,7 +34,7 @@ io.on('connection', function (socket) {
             id : bingoId,
             owner : data.owner,
             votes : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            users : []
+            users : {}
         };
         games[bingoId] = newBingo;
         broadcast("bingoGame", newBingo);
@@ -52,7 +52,32 @@ io.on('connection', function (socket) {
             } else {
                 console.log("not the owner!");
             }
+        } else {
+            console.log("bingoGame null or undefined")
         }
+    });
+    
+    socket.on("voteCell", function(data) {
+       console.log("user: " + data.user + " votes for " + data.cell) ;
+       if(typeof games[data.gameId] !== undefined || games[data.gameId] !== null) {
+           var game = games[data.gameId];
+           if(typeof game.users[data.user] !== undefined || game.users[data.user] !== null) {
+               game.users[data.user] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+           } else {
+               console.log("No user in game, creating...");
+           }
+           
+           var user = game.users[data.user]
+           if(user[data.cell] == 0) {
+               user[data.cell] = 1;
+               broadcast("cellVoted", { cell: data.cell });
+           } else {
+               console.log("Already voted!");
+           }
+       } else {
+           console.log("no game to vote")
+       }
+       
     });
 
     socket.on('disconnect', function () {
@@ -62,7 +87,7 @@ io.on('connection', function (socket) {
 
 function broadcast(event, data) {
   sockets.forEach(function (socket) {
-    console.log("Broadcasting ", data);
+    console.log("Broadcasting " + event + " data: " + data);
     socket.emit(event, data);
   });
 }

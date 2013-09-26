@@ -1,0 +1,197 @@
+{
+    "rows" : 3,
+    "cols" : 6,
+    "cells" : [ 
+        {
+        "row" : "row0",
+        "col" : 0,
+        "filename" : "cell00.png",
+        "description" : "Text-heavy slides"
+        }, {
+        "row" : "row0",
+        "col" : 1,
+        "filename" : "cell01.png",
+        "description" : "Confusing graphics, charts"
+        }, {
+        "row" : "row0",
+        "col" : 2,
+        "filename" : "cell02.png",
+        "description" : "Zips thru too many slides"
+        }, {
+        "row" : "row0",
+        "col" : 3,
+        "filename" : "cell03.png",
+        "description" : "Reads slides too loud"
+        }, {
+        "row" : "row0",
+        "col" : 4,
+        "filename" : "cell04.png",
+        "description" : "Introduction of introducers"
+        }, {
+        "row" : "row0",
+        "col" : 5,
+        "filename" : "cell05.png",
+        "description" : "Excessive laser pointing"
+        }, {
+        "row" : "row1",
+        "col" : 0,
+        "filename" : "cell10.png",
+        "description" : "Glued to podium, stiff as a corpse"
+        }, {
+        "row" : "row1",
+        "col" : 1,
+        "filename" : "cell11.png",
+        "description" : "Runs long, no time for Q&A"
+        }, {
+        "row" : "row1",
+        "col" : 2,
+        "filename" : "cell12.png",
+        "description" : "Long tangents"
+        }, {
+        "row" : "row1",
+        "col" : 3,
+        "filename" : "cell13.png",
+        "description" : "Disorganized rambling"
+        }, {
+        "row" : "row1",
+        "col" : 4,
+        "filename" : "cell14.png",
+        "description" : "No eye contact with audience"
+        }, {
+        "row" : "row1",
+        "col" : 5,
+        "filename" : "cell15.png",
+        "description" : "Cheesy PowerPoint graphics/template"
+        }, {
+        "row" : "row2",
+        "col" : 0,
+        "filename" : "cell20.png",
+        "description" : "Talking at slide with the pointer"
+        }, {
+        "row" : "row2",
+        "col" : 1,
+        "filename" : "cell21.png",
+        "description" : "No plot, characters or storyline"
+        }, {
+        "row" : "row2",
+        "col" : 2,
+        "filename" : "cell22.png",
+        "description" : "Lacks enthusiasm"
+        }, {
+        "row" : "row2",
+        "col" : 3,
+        "filename" : "cell23.png",
+        "description" : "Speaks too softly, no mic"
+        }, {
+        "row" : "row2",
+        "col" : 4,
+        "filename" : "cell24.png",
+        "description" : "Monotone voice"
+        }, {
+        "row" : "row2",
+        "col" : 5,
+        "filename" : "cell25.png",
+        "description" : "Small fonts (<20pt)"
+        } 
+    ],
+    "row0" : [ 
+        {
+        "row" : "row0",
+        "col" : 0,
+        "filename" : "cell00.png",
+        "description" : "Text-heavy slides"
+        }, {
+        "row" : "row0",
+        "col" : 1,
+        "filename" : "cell01.png",
+        "description" : "Confusing graphics, charts"
+        }, {
+        "row" : "row0",
+        "col" : 2,
+        "filename" : "cell02.png",
+        "description" : "Zips thru too many slides"
+        }, {
+        "row" : "row0",
+        "col" : 3,
+        "filename" : "cell03.png",
+        "description" : "Reads slides too loud"
+        }, {
+        "row" : "row0",
+        "col" : 4,
+        "filename" : "cell04.png",
+        "description" : "Introduction of introducers"
+        }, {
+        "row" : "row0",
+        "col" : 5,
+        "filename" : "cell05.png",
+        "description" : "Excessive laser pointing"
+        } 
+    ],
+    "row1" : [ 
+        {
+        "row" : "row1",
+        "col" : 0,
+        "filename" : "cell10.png",
+        "description" : "Glued to podium, stiff as a corpse"
+        }, {
+        "row" : "row1",
+        "col" : 1,
+        "filename" : "cell11.png",
+        "description" : "Runs long, no time for Q&A"
+        }, {
+        "row" : "row1",
+        "col" : 2,
+        "filename" : "cell12.png",
+        "description" : "Long tangents"
+        }, {
+        "row" : "row1",
+        "col" : 3,
+        "filename" : "cell13.png",
+        "description" : "Disorganized rambling"
+        }, {
+        "row" : "row1",
+        "col" : 4,
+        "filename" : "cell14.png",
+        "description" : "No eye contact with audience"
+        }, {
+        "row" : "row1",
+        "col" : 5,
+        "filename" : "cell15.png",
+        "description" : "Cheesy PowerPoint graphics/template"
+        } 
+    ],
+    "row2" : [ 
+        {
+        "row" : "row2",
+        "col" : 0,
+        "filename" : "cell20.png",
+        "description" : "Talking at slide with the pointer"
+        }, {
+        "row" : "row2",
+        "col" : 1,
+        "filename" : "cell21.png",
+        "description" : "No plot, characters or storyline"
+        }, {
+        "row" : "row2",
+        "col" : 2,
+        "filename" : "cell22.png",
+        "description" : "Lacks enthusiasm"
+        }, {
+        "row" : "row2",
+        "col" : 3,
+        "filename" : "cell23.png",
+        "description" : "Speaks too softly, no mic"
+        }, {
+        "row" : "row2",
+        "col" : 4,
+        "filename" : "cell24.png",
+        "description" : "Monotone voice"
+        }, {
+        "row" : "row2",
+        "col" : 5,
+        "filename" : "cell25.png",
+        "description" : "Small fonts (<20pt)"
+        } 
+    ]
+}
+ 

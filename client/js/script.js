@@ -20,10 +20,10 @@ bingo.config(["$routeProvider", function($routeProvider) {
     }
 ]);
 
-bingo.controller("BingoGameListCtrl", ["$scope", "$cookies", "$location",
-    function($scope, angularFire, $cookies, $location) {
-        var socket = io.connect();
+var socket = io.connect();
         
+bingo.controller("BingoGameListCtrl", ["$scope", "$cookies", "$location",
+    function($scope, $cookies, $location) {
         $scope.games = [];
         
         if(typeof $cookies.bpbId === "undefined" || $cookies.bpbId === '') {
@@ -45,6 +45,8 @@ bingo.controller("BingoGameListCtrl", ["$scope", "$cookies", "$location",
         
         socket.on("cleanBingoList", function() {
             $scope.games = [];
+            $scope.$apply();
+            console.log("games cleared");
         });
         
         $scope.newName = "";       
@@ -65,12 +67,24 @@ bingo.controller("BingoGameListCtrl", ["$scope", "$cookies", "$location",
 ]);
 
 bingo.controller("BingoGameCtrl", ["$scope", "$routeParams", "$http", "$cookies",
-    function($scope, angularFire, $routeParams, $http, $cookies) {
+    function($scope, $routeParams, $http, $cookies) {
         $scope.test = "0";
         $scope.gameId = $routeParams.gameId;
         $scope.userId = $cookies.bpbId;
+        $scope.votes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        
+        socket.on("cellVoted", function(data) {
+           $scope.votes[data.cell]++;
+           $scope.$apply();
+        });
+        
+        $http.get('json/bingo_en.json').success(function(data) {
+            $scope.bingoTable = data;
+        });
         
         $scope.vote = function(index) {
+            console.log("voting for " + index),
+            socket.emit('voteCell', { game: $scope.gameId, cell: index, user: $scope.userId });
         };
                 
         $scope.isOwner = function() {
