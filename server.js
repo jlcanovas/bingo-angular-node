@@ -24,6 +24,14 @@ io.on('connection', function (socket) {
 
     sockets.push(socket);
     
+    socket.on("getBingos", function(fn) {
+        var gamesArray = [];
+        for(var gameId in games) {
+            gamesArray.push(games[gameId]);
+        }
+        fn(gamesArray);
+    });
+    
     socket.on("createBingo", function(data) {
         var bingoId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
                 var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
@@ -57,6 +65,17 @@ io.on('connection', function (socket) {
         }
     });
     
+    socket.on("joinBingo", function(data, fn) {
+        console.log("Joining user " + data.user + " to game " + data.game);
+        if(typeof games[data.game] !== "undefined" || games[data.game] !== null) {
+            var game = games[data.game];
+            fn(game.votes);
+        } else {
+            console.log("no game to get votes");
+        }
+     
+    });
+    
     socket.on("voteCell", function(data) {
        console.log("user: " + data.user + " votes for " + data.cell + " in game: " + data.game) ;
        if(typeof games[data.game] !== "undefined" || games[data.game] !== null) {
@@ -80,17 +99,6 @@ io.on('connection', function (socket) {
            console.log("no game to vote");
        }
        
-    });
-    
-    socket.on("joinBingo", function(data, fn) {
-        console.log("Joining user " + data.user + " to game " + data.game);
-        if(typeof games[data.game] !== "undefined" || games[data.game] !== null) {
-            var game = games[data.game];
-            fn(game.votes);
-        } else {
-            console.log("no game to get votes");
-        }
-     
     });
 
     socket.on('disconnect', function () {

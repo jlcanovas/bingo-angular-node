@@ -26,6 +26,12 @@ bingo.controller("BingoGameListCtrl", ["$scope", "$cookies", "$location",
     function($scope, $cookies, $location) {
         $scope.games = [];
         
+        $scope.getBingos = function() {
+            socket.emit('getBingos', function(data) {
+                $scope.games = data; 
+            });
+        };
+        
         if(typeof $cookies.bpbId === "undefined" || $cookies.bpbId === '') {
             $scope.userId = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
                 var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
@@ -76,8 +82,10 @@ bingo.controller("BingoGameCtrl", ["$scope", "$routeParams", "$http", "$cookies"
         };
         
         socket.on("cellVoted", function(data) {
-           $scope.votes[data.cell]++;
-           $scope.$apply();
+            if($scope.gameId == data.game) {
+                $scope.votes[data.cell] = data.votes;
+                $scope.$apply();
+            }
         });
         
         $http.get('json/bingo_en.json').success(function(data) {
