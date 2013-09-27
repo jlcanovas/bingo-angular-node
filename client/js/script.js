@@ -59,10 +59,6 @@ bingo.controller("BingoGameListCtrl", ["$scope", "$cookies", "$location",
         $scope.delete = function(id) {
             socket.emit('deleteBingo', { id: id, user: $scope.userId });
         };
-        
-        $scope.join = function(id) {
-            
-        }
     }
 ]);
 
@@ -72,6 +68,12 @@ bingo.controller("BingoGameCtrl", ["$scope", "$routeParams", "$http", "$cookies"
         $scope.gameId = $routeParams.gameId;
         $scope.userId = $cookies.bpbId;
         $scope.votes = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        
+        $scope.join = function() {
+            socket.emit('joinBingo', { game: $scope.gameId, user: $scope.userId } , function(data) {
+                $scope.votes = data; 
+            });
+        };
         
         socket.on("cellVoted", function(data) {
            $scope.votes[data.cell]++;
@@ -88,6 +90,7 @@ bingo.controller("BingoGameCtrl", ["$scope", "$routeParams", "$http", "$cookies"
         };
                 
         $scope.isOwner = function() {
+            
         }
     }
 ]);

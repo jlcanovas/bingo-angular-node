@@ -53,31 +53,44 @@ io.on('connection', function (socket) {
                 console.log("not the owner!");
             }
         } else {
-            console.log("bingoGame null or undefined")
+            console.log("bingoGame null or undefined");
         }
     });
     
     socket.on("voteCell", function(data) {
-       console.log("user: " + data.user + " votes for " + data.cell) ;
-       if(typeof games[data.gameId] !== undefined || games[data.gameId] !== null) {
-           var game = games[data.gameId];
-           if(typeof game.users[data.user] !== undefined || game.users[data.user] !== null) {
+       console.log("user: " + data.user + " votes for " + data.cell + " in game: " + data.game) ;
+       if(typeof games[data.game] !== "undefined" || games[data.game] !== null) {
+           var game = games[data.game];
+           if(typeof game.users[data.user] == "undefined" || game.users[data.user] === null) {
+               console.log("No user in game, creating...");
                game.users[data.user] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
            } else {
-               console.log("No user in game, creating...");
+               console.log("User already created");
            }
            
-           var user = game.users[data.user]
-           if(user[data.cell] == 0) {
+           var user = game.users[data.user];
+           if(user[data.cell] === 0) {
                user[data.cell] = 1;
-               broadcast("cellVoted", { cell: data.cell });
+               game.votes[data.cell]++;
+               broadcast("cellVoted", { game: data.game, cell: data.cell, votes: game.votes[data.cell] });
            } else {
                console.log("Already voted!");
            }
        } else {
-           console.log("no game to vote")
+           console.log("no game to vote");
        }
        
+    });
+    
+    socket.on("joinBingo", function(data, fn) {
+        console.log("Joining user " + data.user + " to game " + data.game);
+        if(typeof games[data.game] !== "undefined" || games[data.game] !== null) {
+            var game = games[data.game];
+            fn(game.votes);
+        } else {
+            console.log("no game to get votes");
+        }
+     
     });
 
     socket.on('disconnect', function () {
