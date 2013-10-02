@@ -1,10 +1,10 @@
 {
-  "name": "chat-example",
+  "name": "bingo-example",
   "version": "0.0.0",
-  "description": "A chat example to showcase how to use `socket.io` with a static `express` server",
+  "description": "Bad Presentation Bingo using NodeJS and AngularJS",
   "main": "server.js",
   "repository": "",
-  "author": "Mostafa Eweda <mostafa@c9.io>",
+  "author": "Javier Canovas <me@jlcanovas.es>",
   "dependencies": {
     "async": "~0.2.8",
     "express": "~3.2.4",
