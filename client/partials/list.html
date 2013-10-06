@@ -1,36 +1,43 @@
-<p>
-<div class"alert alert-info">This is your id: {{userId}}</div>
-</p>
 
-<p>This are the games already created:</p>
+    <div class="jumbotron">
+    <div class="container">
+    <img src="/img/entry.png"/>
+    <h1>Bad Presentation Bingo</h1>
+    <h2>Do you dare?</h2>
+    </div>
+    </div>
+
+<alert type="success">This is your id: {{userId}}</alert>
+
+<h1>Join a Game</h1>
 
 <div ng-repeat="game in games">
     <div class="row">
-        <div class="col-md-10">
             <div class="panel panel-primary">
-                <div class="panel-title">
-                    <p>{{game.name}}</p>
+                <div class="panel-heading">
+                    <div class="col-md-10">
+                        <p>{{game.name}}</p>
+                    </div>
+                    <div class="col-md-1">  
+                        <form role="form">
+                            <button type="submit" class="btn btn-default" onClick="location.href='#/games/{{game.id}}'">Join</button>
+                            <!--<button type="submit" class="btn btn-default" ng-click="join(game.id)">Join</button>-->
+                        </form>  
+                    </div>  
+                    <div class="col-md-1">    
+                        <form role="form">
+                            <button type='submit' class="btn btn-default" ng-click="delete(game.id)">Delete</button>
+                        </form>
+                    </div>  
                 </div>
                 <div class="panel-body">
                     <p>Owner: {{game.owner}}</p>
                 </div>
             </div>
-        </div>
-        <div class="col-md-1">
-            <form role="form">
-                <button type="submit" class="btn btn-default" onClick="location.href='#/games/{{game.id}}'">Join</button>
-                <!--<button type="submit" class="btn btn-default" ng-click="join(game.id)">Join</button>-->
-            </form>
-        </div>
-        <div class="col-md-1">
-            <form role="form">
-                <button type='submit' class="btn btn-default" ng-click="delete(game.id)">Delete</button>
-            </form>
-        </div>
     </div>
 </div>
 
-<p>If you want to create one, fill in the next form:</p>
+<h1>Create a game</h1>
 
 <div class="row">
     <form class="form-horizontal" role="form">

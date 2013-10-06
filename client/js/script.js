@@ -4,7 +4,7 @@ angular.module("bingo.directive", []);
 
 angular.module("bingo.filter", []);
 
-var bingo = angular.module("bingo", ["bingo.service", "bingo.directive", "bingo.filter", "ngCookies"]);
+var bingo = angular.module("bingo", ["bingo.service", "bingo.directive", "bingo.filter", "ngCookies", "ui.bootstrap"]);
 
 bingo.config(["$routeProvider", function($routeProvider) {
         $routeProvider.
@@ -21,7 +21,7 @@ bingo.config(["$routeProvider", function($routeProvider) {
 ]);
 
 var socket = io.connect();
-        
+
 bingo.controller("BingoGameListCtrl", ["$scope", "$cookies", "$location",
     function($scope, $cookies, $location) {
         $scope.games = [];
